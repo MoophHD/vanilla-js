@@ -40,5 +40,28 @@ const arrayProcessingTool = (() => {
     median: (arr) => arr.reduce((acc, val) => acc + val, 0) / arr.length,
   };
 
-  return { subSum, subSum2, search };
+  function selectionTask(arr) {
+    if (arr.length == 1) return [arr[0]];
+
+    let len = 1;
+    let maxLen = 1;
+    let maxLenLastIndex = 0;
+    let lastNum = arr[0];
+
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i] > lastNum) {
+        len++;
+      } else {
+        maxLen = Math.max(maxLen, len);
+        maxLenLastIndex = i;
+
+        len = 1;
+      }
+      lastNum = arr[i];
+    }
+
+    return arr.slice(maxLenLastIndex - maxLen, maxLenLastIndex);
+  }
+
+  return { subSum, subSum2, search, selectionTask };
 })();
