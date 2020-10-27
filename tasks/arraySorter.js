@@ -87,5 +87,3 @@ const arraySorter = (() => {
 
   return { quickSort, bubbleSort, selectionSort, insertionSort };
 })();
-
-console.log(arraySorter.insertionSort([5, 40, 3, -2, 1]));

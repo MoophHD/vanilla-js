@@ -228,4 +228,3 @@ const dateDisplayFormatter = (() => {
 })();
 
 let a = dateDisplayFormatter.parseDate("31102011", "DDMMYYYY");
-console.log(a.fromNow());
