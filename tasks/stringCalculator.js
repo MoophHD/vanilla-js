@@ -1,231 +1,135 @@
+Array.prototype.reIndexOf = function (rx) {
+  for (var i in this) {
+    if (this[i].toString().match(rx)) {
+      return i;
+    }
+  }
+  return -1;
+};
+
+Array.prototype.clean = function () {
+  for (var i = 0; i < this.length; i++) {
+    if (this[i] === "") {
+      this.splice(i, 1);
+    }
+  }
+  return this;
+};
+
 const stringCalculator = (() => {
-  function isStrNegative(str) {
-    return str[0] == "-";
+  function isNumeric(str) {
+    return !isNaN(parseFloat(str)) && isFinite(str);
   }
 
-  function negate(str) {
-    if (str[0] == "-") {
-      return str.slice(1);
-    } else {
-      return "-" + str;
-    }
-  }
+  //Shunting-yard algorithm
+  function infixToPostfix(infix) {
+    let outputQueue = [];
+    let operatorStack = [];
+    let operators = {
+      "^": {
+        precedence: 4,
+        associativity: "Right",
+      },
+      "*": {
+        precedence: 3,
+        associativity: "Left",
+      },
+      "/": {
+        precedence: 3,
+        associativity: "Left",
+      },
+      "+": {
+        precedence: 2,
+        associativity: "Left",
+      },
+      "-": {
+        precedence: 2,
+        associativity: "Left",
+      },
+    };
 
-  function reverseString(str) {
-    return str.split("").reverse().join("");
-  }
+    infix = infix.replace(/\s+/g, "");
+    infix = infix.split(/([\+\-\*\/\^\(\)])/).clean();
 
-  // removes zeroes from both sides of a string
-  function trimZeroes(str) {
-    if (str.length == 1) return str;
+    for (let i = 0; i < infix.length; i++) {
+      let token = infix[i];
 
-    return str.replace(/(^|(?<=\-))0+/, "").replace(/\..+0+$/, "");
-  }
-
-  // returns true if str1 < str2
-  function isSmallerInteger(str1 = "", str2 = "") {
-    let len1 = str1.length;
-    let len2 = str2.length;
-
-    if (len1 != len2) return len1 < len2;
-
-    for (let i = 0; i < len1; i++) {
-      if (+str1[i] < +str2[i]) {
-        return true;
+      if (isNumeric(token)) {
+        outputQueue.push(token);
+      } else if ("^*/+-".indexOf(token) !== -1) {
+        let o1 = token;
+        let o2 = operatorStack[operatorStack.length - 1];
+        while (
+          "^*/+-".indexOf(o2) !== -1 &&
+          ((operators[o1].associativity === "Left" &&
+            operators[o1].precedence <= operators[o2].precedence) ||
+            (operators[o1].associativity === "Right" &&
+              operators[o1].precedence < operators[o2].precedence))
+        ) {
+          outputQueue.push(operatorStack.pop());
+          o2 = operatorStack[operatorStack.length - 1];
+        }
+        operatorStack.push(o1);
+      } else if (token === "(") {
+        operatorStack.push(token);
+      } else if (token === ")") {
+        while (operatorStack[operatorStack.length - 1] !== "(") {
+          outputQueue.push(operatorStack.pop());
+        }
+        operatorStack.pop();
       }
     }
 
-    return false;
+    while (operatorStack.length > 0) {
+      outputQueue.push(operatorStack.pop());
+    }
+    return outputQueue;
   }
 
-  function isSmallerFloat(str1 = "", str2 = "") {
-    let [beforeDot1, afterDot1] = str1.split(".");
-    let [beforeDot2, afterDot2] = str2.split(".");
-
-    if (isSmallerInteger(beforeDot1, beforeDot2)) {
-      return true;
-    }
-
-    if (beforeDot1 == beforeDot2 && isSmallerInteger(afterDot1, afterDot2)) {
-      return true;
-    }
-
-    return false;
-  }
-
-  function substructIntegers(str1 = "", str2 = "") {
-    let str = "";
-    str1 = reverseString(str1);
-    str2 = reverseString(str2);
-    let len1 = str1.length;
-    let len2 = str2.length;
-
-    let sub;
-    let carry = 0;
-    for (let i = 0; i < len2; i++) {
-      sub = str1[i] - str2[i] - carry;
-
-      if (sub < 0) {
-        sub += 10;
-        carry = 1;
-      } else {
-        carry = 0;
+  function solveBinaryOperation(num1, num2, operation) {
+    num1 = +num1;
+    num2 = +num2;
+    switch (operation) {
+      case "+": {
+        return num1 + num2;
       }
-
-      str += sub;
-    }
-
-    for (let i = len2; i < len1; i++) {
-      sub = str1[i] - carry;
-
-      if (sub < 0) {
-        sub += 10;
-        carry = 1;
-      } else {
-        carry = 0;
+      case "-": {
+        return num1 - num2;
       }
-
-      str += sub;
-    }
-
-    return trimZeroes(reverseString(str));
-  }
-
-  function addIntegers(str1 = "", str2 = "") {
-    //len(str2) must be > len(str1)
-    if (str1.length > str2.length) {
-      [str1, str2] = [str2, str1];
-    }
-
-    let str = "";
-    str1 = reverseString(str1);
-    str2 = reverseString(str2);
-    let len1 = str1.length;
-    let len2 = str2.length;
-
-    let carry = 0;
-    let sum = 0;
-    for (let i = 0; i < len1; i++) {
-      sum = parseInt(str1[i]) + parseInt(str2[i]) + carry;
-      str += sum % 10;
-
-      carry = ~~(sum / 10);
-    }
-
-    for (let i = len1; i < len2; i++) {
-      sum = parseInt(str2[i]) + carry;
-      str += sum % 10;
-
-      carry = ~~(sum / 10);
-    }
-
-    if (carry > 0) {
-      str += carry;
-    }
-
-    return trimZeroes(reverseString(str));
-  }
-
-  function addFloats(str1 = "", str2 = "") {
-    let result = "";
-
-    if (str1.indexOf(".") != -1 && str2.indexOf(".") != -1) {
-      let [beforeDot1, afterDot1] = str1.split(".");
-      let [beforeDot2, afterDot2] = str2.split(".");
-
-      let sumBeforeDot = addIntegers(beforeDot1, beforeDot2);
-      let sumAfterDot = addIntegers(afterDot1, afterDot2);
-
-      if (sumAfterDot.length > Math.max(afterDot1.length, afterDot2.length)) {
-        sumBeforeDot = addIntegers("1", sumBeforeDot);
-        sumAfterDot = sumAfterDot.slice(1);
+      case "*": {
+        return num1 * num2;
       }
-
-      result = sumBeforeDot + "." + sumAfterDot;
-    } else if (str1.indexOf(".") != -1) {
-      let [beforeDot, afterDot] = str1.split(".");
-      result = addIntegers(beforeDot, str2) + "." + afterDot;
-    } else if (str2.indexOf(".") != -1) {
-      let [beforeDot, afterDot] = str2.split(".");
-      result = addIntegers(str1, beforeDot) + "." + afterDot;
-    } else {
-      result = addIntegers(str1, str2);
-    }
-
-    return result;
-  }
-
-  function substructFloats(str1 = "", str2 = "") {
-    let isNegative = false;
-    // str1 must be > str2
-    if (isSmallerFloat(str1, str2)) {
-      [str1, str2] = [str2, str1];
-      isNegative = true;
-    }
-
-    let result = "";
-    // purposefully made a slightly inefficient if statement to improve readability
-    if (str1.indexOf(".") != -1 && str2.indexOf(".") != -1) {
-      let [beforeDot1, afterDot1] = str1.split(".");
-      let [beforeDot2, afterDot2] = str2.split(".");
-
-      let sumBeforeDot, sumAfterDot;
-      if (isSmallerInteger(afterDot2, afterDot1)) {
-        sumBeforeDot = substructIntegers(beforeDot1, beforeDot2);
-        sumAfterDot = substructIntegers(afterDot1, afterDot2);
-      } else {
-        sumBeforeDot = substructIntegers(
-          substructIntegers(beforeDot1, "1"),
-          beforeDot2
-        );
-        // 1 + afterDot1 - afterDot2
-        sumAfterDot = substructIntegers(
-          addIntegers("1" + "0".repeat(afterDot1.length), afterDot1),
-          afterDot2
-        );
+      case "/": {
+        return num1 / num2;
       }
-      result = sumBeforeDot + "." + sumAfterDot;
-    } else if (str1.indexOf(".") != -1) {
-      let [beforeDot, afterDot] = str1.split(".");
-      result = substructIntegers(beforeDot, str2) + "." + afterDot;
-    } else if (str2.indexOf(".") != -1) {
-      let [beforeDot, afterDot] = str2.split(".");
-      beforeDot = substructIntegers(substructIntegers(str1, "1"), beforeDot);
-      afterDot = substructIntegers("1" + "0".repeat(afterDot.length), afterDot);
-      result = beforeDot + "." + afterDot;
-    } else {
-      result = substructIntegers(str1, str2);
+      case "^": {
+        return num1 ** num2;
+      }
     }
-
-    return isNegative ? negate(result) : result;
   }
 
-  function substruct(str1 = "", str2 = "") {
-    // -str1 - -str2
-    if (isStrNegative(str1) && isStrNegative(str2)) {
-      return substructFloats(negate(str2), negate(str1));
-      // -str1 - str2
-    } else if (isStrNegative(str1)) {
-      return negate(addFloats(negate(str1), str2));
-      // str1 - -str2
-    } else if (isStrNegative(str2)) {
-      return addFloats(str1, negate(str2));
-    }
+  // solve reverse polish notation (postfix)
+  function solveRPN(expression) {
+    let operationInd = +expression.reIndexOf(/\+|\-|\*|\/|\^/);
 
-    return substructFloats(str1, str2);
+    let operation = expression[operationInd];
+    let num1 = expression[operationInd - 2];
+    let num2 = expression[operationInd - 1];
+
+    let result = solveBinaryOperation(num1, num2, operation);
+
+    if (expression.length == 1) return expression[0];
+
+    return solveRPN([
+      ...expression.slice(0, operationInd - 2),
+      result,
+      ...expression.slice(operationInd + 1),
+    ]);
   }
 
-  function add(str1 = "", str2 = "") {
-    if (isStrNegative(str1) && isStrNegative(str2)) {
-      return negate(addFloats(negate(str1), negate(str2)));
-    } else if (isStrNegative(str1)) {
-      return substructFloats(str2, negate(str1));
-    } else if (isStrNegative(str2)) {
-      return substructFloats(str1, negate(str2));
-    }
-
-    return addFloats(str1, str2);
+  function parse(expression) {
+    return solveRPN(infixToPostfix(expression));
   }
 
-  return { add, substruct };
+  return { parse };
 })();
