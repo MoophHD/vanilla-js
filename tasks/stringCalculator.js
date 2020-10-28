@@ -1,12 +1,14 @@
 const stringCalculator = (() => {
+  function isStrNegative(str) {
+    return str[0] == "-";
+  }
+
   function negate(str) {
     if (str[0] == "-") {
-      str = str.slice(1);
+      return str.slice(1);
     } else {
-      str = "-" + str;
+      return "-" + str;
     }
-
-    return str;
   }
 
   function reverseString(str) {
@@ -19,7 +21,7 @@ const stringCalculator = (() => {
   }
 
   // returns true if str1 < str2
-  function isSmaller(str1 = "", str2 = "") {
+  function isSmallerInteger(str1 = "", str2 = "") {
     let len1 = str1.length;
     let len2 = str2.length;
 
@@ -29,6 +31,21 @@ const stringCalculator = (() => {
       if (+str1[i] < +str2[i]) {
         return true;
       }
+    }
+
+    return false;
+  }
+
+  function isSmallerFloat(str1 = "", str2 = "") {
+    let [beforeDot1, afterDot1] = str1.split(".");
+    let [beforeDot2, afterDot2] = str2.split(".");
+
+    if (isSmallerInteger(beforeDot1, beforeDot2)) {
+      return true;
+    }
+
+    if (beforeDot1 == beforeDot2 && isSmallerInteger(afterDot1, afterDot2)) {
+      return true;
     }
 
     return false;
@@ -73,7 +90,7 @@ const stringCalculator = (() => {
   }
 
   function addIntegers(str1 = "", str2 = "") {
-    //str2 must be > str1
+    //len(str2) must be > len(str1)
     if (str1.length > str2.length) {
       [str1, str2] = [str2, str1];
     }
@@ -104,11 +121,12 @@ const stringCalculator = (() => {
       str += carry;
     }
 
-    return reverseString(trimZeroes(str));
+    return trimZeroes(reverseString(str));
   }
 
-  function add(str1 = "", str2 = "") {
-    // purposefully made a slightly inefficient if statement to improve readability
+  function addFloats(str1 = "", str2 = "") {
+    let result = "";
+
     if (str1.indexOf(".") != -1 && str2.indexOf(".") != -1) {
       let [beforeDot1, afterDot1] = str1.split(".");
       let [beforeDot2, afterDot2] = str2.split(".");
@@ -121,22 +139,24 @@ const stringCalculator = (() => {
         sumAfterDot = sumAfterDot.slice(1);
       }
 
-      return sumBeforeDot + "." + sumAfterDot;
+      result = sumBeforeDot + "." + sumAfterDot;
     } else if (str1.indexOf(".") != -1) {
       let [beforeDot, afterDot] = str1.split(".");
-      return addIntegers(beforeDot, str2) + "." + afterDot;
+      result = addIntegers(beforeDot, str2) + "." + afterDot;
     } else if (str2.indexOf(".") != -1) {
       let [beforeDot, afterDot] = str2.split(".");
-      return addIntegers(str1, beforeDot) + "." + afterDot;
+      result = addIntegers(str1, beforeDot) + "." + afterDot;
     } else {
-      return addIntegers(str1, str2);
+      result = addIntegers(str1, str2);
     }
+
+    return result;
   }
 
-  function substruct(str1 = "", str2 = "") {
+  function substructFloats(str1 = "", str2 = "") {
     let isNegative = false;
     // str1 must be > str2
-    if (isSmaller(str1, str2)) {
+    if (isSmallerFloat(str1, str2)) {
       [str1, str2] = [str2, str1];
       isNegative = true;
     }
@@ -148,7 +168,7 @@ const stringCalculator = (() => {
       let [beforeDot2, afterDot2] = str2.split(".");
 
       let sumBeforeDot, sumAfterDot;
-      if (isSmaller(afterDot2, afterDot1)) {
+      if (isSmallerInteger(afterDot2, afterDot1)) {
         sumBeforeDot = substructIntegers(beforeDot1, beforeDot2);
         sumAfterDot = substructIntegers(afterDot1, afterDot2);
       } else {
@@ -178,5 +198,36 @@ const stringCalculator = (() => {
     return isNegative ? negate(result) : result;
   }
 
+  function substruct(str1 = "", str2 = "") {
+    // -str1 - -str2
+    if (isStrNegative(str1) && isStrNegative(str2)) {
+      return substructFloats(negate(str2), negate(str1));
+      // -str1 - str2
+    } else if (isStrNegative(str1)) {
+      return negate(addFloats(negate(str1), str2));
+      // str1 - -str2
+    } else if (isStrNegative(str2)) {
+      return addFloats(str1, negate(str2));
+    }
+
+    return substructFloats(str1, str2);
+  }
+
+  function add(str1 = "", str2 = "") {
+    if (isStrNegative(str1) && isStrNegative(str2)) {
+      return negate(addFloats(negate(str1), negate(str2)));
+    } else if (isStrNegative(str1)) {
+      return substructFloats(str2, negate(str1));
+    } else if (isStrNegative(str2)) {
+      return substructFloats(str1, negate(str2));
+    }
+
+    return addFloats(str1, str2);
+  }
+
   return { add, substruct };
 })();
+
+let result = stringCalculator.add("-123.5", "-12.9");
+
+console.log(result);
