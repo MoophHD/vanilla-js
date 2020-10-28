@@ -17,6 +17,8 @@ const stringCalculator = (() => {
 
   // removes zeroes from both sides of a string
   function trimZeroes(str) {
+    if (str.length == 1) return str;
+
     return str.replace(/(^|(?<=\-))0+/, "").replace(/\..+0+$/, "");
   }
 
@@ -227,7 +229,3 @@ const stringCalculator = (() => {
 
   return { add, substruct };
 })();
-
-let result = stringCalculator.add("-123.5", "-12.9");
-
-console.log(result);
