@@ -1,0 +1,49 @@
+.main-container {
+  padding-top: 1rem;
+}
+
+.title {
+  margin-bottom: 3rem;
+  color: var(--red);
+}
+
+.tasklist-container {
+  margin-bottom: 3rem;
+}
+
+.task__description {
+  margin-bottom: 1rem;
+}
+
+.task__code-btn {
+  margin-bottom: 1rem;
+}
+
+.task__live {
+  display: flex;
+  flex-direction: column;
+}
+
+.live__output {
+  flex: 1;
+}
+
+.task__method {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+}
+
+.method__name {
+  flex-basis: 10rem;
+}
+
+.method__input-row {
+  flex: 3;
+  display: flex;
+}
+
+.method__input {
+  width: 150px;
+}

@@ -224,7 +224,9 @@ const dateDisplayFormatter = (() => {
     return formatDate(date, outputFormat);
   }
 
-  return { format, formatDate, parseDate };
-})();
+  function fromNow(date, inputFormat) {
+    return parseDate(date, inputFormat).fromNow();
+  }
 
-let a = dateDisplayFormatter.parseDate("31102011", "DDMMYYYY");
+  return { format, parseDate, fromNow };
+})();
