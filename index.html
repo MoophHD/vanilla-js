@@ -10,6 +10,11 @@
       integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
       crossorigin="anonymous"
     />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link rel="stylesheet" href="./style.css" />
 
     <script src="./tasks/arrayProcessingTool.js" defer></script>
@@ -31,7 +36,7 @@
         <ol>
           <li><a href="#arrayProcessingTool">Array Processing Tool</a></li>
           <li><a href="#dateDisplayFormatter">Date Display Formatter</a></li>
-          <li><a href="#">Text Formatter</a></li>
+          <li><a href="#textFormatter">Text Formatter</a></li>
           <li><a href="#">String calculator</a></li>
           <li><a href="#">Array Sorter</a></li>
           <li><a href="#">Binary Converter</a></li>
@@ -50,13 +55,15 @@
         </p>
 
         <a
-          class="btn btn-primary task__code-btn"
+          class="btn btn-primary btn-danger task__code-btn"
           href="https://github.com/MoophHD/p2.itechart/blob/dev/tasks/dateDisplayFormatter.js"
-          >Code</a
-        >
+          >Code
+          <i class="fa fa-link"></i>
+        </a>
 
-        <div class="task__live">
-          <div class="task__method" id="format">
+        <h3>Live</h3>
+        <div class="task-live">
+          <div class="task__method" data-method-name="format">
             <span class="method__name">format</span>
             <span>(</span>
             <div class="method__input-row">
@@ -71,10 +78,10 @@
               />
               <span>) = </span>
             </div>
-            <span class="live__output"></span>
+            <span class="task__output"></span>
           </div>
 
-          <div class="task__method" id="parseDate">
+          <div class="task__method" data-method-name="parseDate">
             <span class="method__name">parseDate</span>
             <span>(</span>
             <div class="method__input-row">
@@ -83,10 +90,10 @@
               <input type="text" class="method__input" placeholder="YYYYMMDD" />
               <span>) = </span>
             </div>
-            <span class="live__output"></span>
+            <span class="task__output"></span>
           </div>
 
-          <div class="task__method" id="fromNow">
+          <div class="task__method" data-method-name="fromNow">
             <span class="method__name">fromNow</span>
             <span>(</span>
             <div class="method__input-row">
@@ -103,7 +110,215 @@
               />
               <span>) = </span>
             </div>
-            <span class="live__output"></span>
+            <span class="task__output"></span>
+          </div>
+        </div>
+
+        <h3>Examples</h3>
+        <div class="task-example">
+          <div class="task__method" data-method-name="format">
+            <span class="method__name">format</span>
+            <span>(</span>
+            <div class="method__input-row">
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="31102011"
+              />
+              <span>,</span>
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="DDMMYYYY"
+              />
+              <span>,</span>
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="DD-MM-YYYY"
+              />
+              <span>) = </span>
+            </div>
+            <span class="task__output"></span>
+          </div>
+
+          <div class="task__method" data-method-name="format">
+            <span class="method__name">format</span>
+            <span>(</span>
+            <div class="method__input-row">
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="12 Oct 2019"
+              />
+              <span>,</span>
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="DD MMM YYYY"
+              />
+              <span>,</span>
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="DD-MM-YYYY"
+              />
+              <span>) = </span>
+            </div>
+            <span class="task__output"></span>
+          </div>
+
+          <div class="task__method" data-method-name="format">
+            <span class="method__name">format</span>
+            <span>(</span>
+            <div class="method__input-row">
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="10/29/2020"
+              />
+              <span>,</span>
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="MM/DD/YYYY"
+              />
+              <span>,</span>
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="MMMM DD YYYY"
+              />
+              <span>) = </span>
+            </div>
+            <span class="task__output"></span>
+          </div>
+
+          <div class="task__method" data-method-name="fromNow">
+            <span class="method__name">fromNow</span>
+            <span>(</span>
+            <div class="method__input-row">
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="10/28/2019"
+              />
+              <span>,</span>
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="MM/DD/YYYY"
+              />
+              <span>) = </span>
+            </div>
+            <span class="task__output"></span>
+          </div>
+
+          <div class="task__method" data-method-name="parseDate">
+            <span class="method__name">parseDate</span>
+            <span>(</span>
+            <div class="method__input-row">
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="10/29/2020"
+              />
+              <span>,</span>
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="MM/DD/YYYY"
+              />
+              <span>) = </span>
+            </div>
+            <span class="task__output"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="task" id="textFormatter">
+        <h3 class="task__title">Text Formatter</h3>
+        <p class="task__description">
+          Написать функцию обработчика входного текста. Функция должна принимать
+          на вход строку, максимальный размер строки (опционально), максимальное
+          количество строк (опционально), тип форматирования (“перенос по
+          слову”, “перенос по символу”, “перенос по предложению”, “переносов
+          нет” - опционально).
+        </p>
+
+        <a
+          class="btn btn-primary btn-danger task__code-btn"
+          href="https://github.com/MoophHD/p2.itechart/blob/dev/tasks/stringCalculator.js"
+          >Code
+          <i class="fa fa-link"></i>
+        </a>
+
+        <h3>Live</h3>
+        <div class="task-live">
+          <div class="task__method" data-method-name="format">
+            <span class="method__name">format</span>
+            <span>(</span>
+            <div class="method__input-row">
+              <textarea
+                type="text"
+                class="method__input method__input--area"
+                placeholder="Написать функцию обработчика входного текста. Функция должна принимать
+              на вход строку, максимальный размер строки (опционально), максимальное"
+              ></textarea>
+              <span>,</span>
+              <input type="text" class="method__input" placeholder="20" />
+              <span>,</span>
+              <input type="text" class="method__input" placeholder="20" />
+              <span>,</span>
+              <select class="method__input" id="cars">
+                <option value="WORD">WORD</option>
+                <option value="LETTER">LETTER</option>
+                <option value="SENTENCE">SENTENCE</option>
+              </select>
+              <span>) = </span>
+            </div>
+            <span class="task__output task__output--full-width"></span>
+          </div>
+        </div>
+
+        <h3>Examples</h3>
+        <div class="task-example">
+          <div class="task__method" data-method-name="format">
+            <span class="method__name">format</span>
+            <span>(</span>
+            <div class="method__input-row">
+              <textarea
+                type="text"
+                class="method__input method__input--area"
+                placeholder="Написать функцию обработчика входного текста. Функция должна принимать
+            на вход строку, максимальный размер строки (опционально), максимальное"
+              ></textarea>
+              <span>,</span>
+              <input type="text" class="method__input" placeholder="20" />
+              <span>,</span>
+              <input type="text" class="method__input" placeholder="20" />
+              <span>,</span>
+              <select class="method__input" id="cars">
+                <option value="WORD">WORD</option>
+                <option value="LETTER">LETTER</option>
+                <option value="SENTENCE">SENTENCE</option>
+              </select>
+              <span>) = </span>
+            </div>
+            <span class="task__output task__output--full-width"></span>
           </div>
         </div>
       </div>

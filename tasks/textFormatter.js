@@ -56,12 +56,19 @@ const textFormatter = (() => {
     return lines;
   }
 
-  return function (text = "", lineLength, lineCount, wrapType) {
+  function format(text = "", lineLength, lineCount, wrapType) {
     //if there's linecount but no line len, calculate max line len
+    lineLength = +lineLength;
+    lineCount = +lineCount;
     if (lineCount && !lineLength) lineLength = ~~(text.length / lineCount);
     if (!lineCount) lineCount = Infinity;
 
     const lines = divideIntoLines(text, lineLength, lineCount, wrapType);
+
     return lines.join("\n");
+  }
+
+  return {
+    format,
   };
 })();

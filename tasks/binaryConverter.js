@@ -49,5 +49,3 @@ const binaryConverter = (() => {
 
   return { convert, binToDec, decToBin };
 })();
-
-console.log(binaryConverter.decToBin(["1", "0"]));

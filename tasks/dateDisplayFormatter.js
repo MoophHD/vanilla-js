@@ -214,7 +214,6 @@ const dateDisplayFormatter = (() => {
     outputFormat = "DD-MM-YYYY"
   ) {
     let date;
-
     if (typeof input == "string") {
       date = parseDate(input, inputFormat);
     } else {
