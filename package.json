@@ -1,0 +1,23 @@
+{
+  "name": "p2.itechart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^26.6.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoophHD/p2.itechart.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MoophHD/p2.itechart/issues"
+  },
+  "homepage": "https://github.com/MoophHD/p2.itechart#readme"
+}
