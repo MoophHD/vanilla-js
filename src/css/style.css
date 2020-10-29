@@ -28,8 +28,13 @@
   flex: 1;
 }
 
-.task__output--full-width {
+.task__output-wrapper {
   flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+}
+.task__output-wrapper>.task__output {
+  flex: initial;
 }
 
 .task__method {

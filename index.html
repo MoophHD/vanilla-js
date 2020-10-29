@@ -301,24 +301,76 @@
             <span>(</span>
             <div class="method__input-row">
               <textarea
+                disabled
                 type="text"
                 class="method__input method__input--area"
                 placeholder="Написать функцию обработчика входного текста. Функция должна принимать
             на вход строку, максимальный размер строки (опционально), максимальное"
               ></textarea>
               <span>,</span>
-              <input type="text" class="method__input" placeholder="20" />
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="20"
+              />
               <span>,</span>
-              <input type="text" class="method__input" placeholder="20" />
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="20"
+              />
               <span>,</span>
-              <select class="method__input" id="cars">
+              <select disabled class="method__input" id="cars">
                 <option value="WORD">WORD</option>
                 <option value="LETTER">LETTER</option>
                 <option value="SENTENCE">SENTENCE</option>
               </select>
               <span>) = </span>
             </div>
-            <span class="task__output task__output--full-width"></span>
+            <div class="task__output-wrapper">
+              <span class="task__output"> </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="task-example">
+          <div class="task__method" data-method-name="format">
+            <span class="method__name">format</span>
+            <span>(</span>
+            <div class="method__input-row">
+              <textarea
+                disabled
+                type="text"
+                class="method__input method__input--area"
+                placeholder="Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum reiciendis natus ullam. Rem similique asperiores perferendis vel est ratione maiores voluptatum tenetur quos error iusto possimus. Fugiat delectus libero."
+              ></textarea>
+              <span>,</span>
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="60"
+              />
+              <span>,</span>
+              <input
+                disabled
+                type="text"
+                class="method__input"
+                placeholder="20"
+              />
+              <span>,</span>
+              <select disabled class="method__input" id="cars">
+                <option value="WORD">WORD</option>
+                <option value="LETTER">LETTER</option>
+                <option selected value="SENTENCE">SENTENCE</option>
+              </select>
+              <span>) = </span>
+            </div>
+            <div class="task__output-wrapper">
+              <span class="task__output"> </span>
+            </div>
           </div>
         </div>
       </div>
