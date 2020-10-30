@@ -64,11 +64,13 @@ const textFormatter = (() => {
       lineLength = 60;
     }
 
-    if (lineCount && !lineLength) lineLength = ~~(text.length / lineCount);
+    if (lineCount && !lineLength)
+      lineLength = Math.ceil(text.length / lineCount);
     if (!lineCount) lineCount = Infinity;
 
     const lines = divideIntoLines(text, lineLength, lineCount, wrapType);
 
+    console.log(lines);
     return lines.join("\n");
   }
   return {
