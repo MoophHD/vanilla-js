@@ -23,11 +23,6 @@
   margin-bottom: 0.5rem;
 }
 
-.task__live {
-  display: flex;
-  flex-direction: column;
-}
-
 .task__output {
   flex: 1;
 }
@@ -37,6 +32,7 @@
   display: flex;
   justify-content: center;
 }
+
 .task__output-wrapper > .task__output {
   flex: initial;
 }
