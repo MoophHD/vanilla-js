@@ -62,194 +62,220 @@
         </a>
 
         <h3>Live</h3>
-        <div class="task-live">
-          <div class="task__method" data-method-name="format">
-            <span class="method__name">format</span>
-            <span>(</span>
-            <div class="method__input-row">
-              <input type="text" class="method__input" placeholder="input" />
-              <span>,</span>
-              <input
-                type="text"
-                class="method__input"
-                placeholder="inputFormat"
-              />
-              <span>,</span>
-              <input
-                type="text"
-                class="method__input"
-                placeholder="outputFormat"
-              />
-              <span>) = </span>
-            </div>
-            <span class="task__output"></span>
-          </div>
+        <div class="task__live">
+          <ul>
+            <li>
+              <div class="task__method" data-method-name="format">
+                <span class="method__name">format</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    type="text"
+                    class="method__input"
+                    placeholder="input"
+                  />
+                  <span>,</span>
+                  <input
+                    type="text"
+                    class="method__input"
+                    placeholder="inputFormat"
+                  />
+                  <span>,</span>
+                  <input
+                    type="text"
+                    class="method__input"
+                    placeholder="outputFormat"
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"></span>
+              </div>
+            </li>
 
-          <div class="task__method" data-method-name="parseDate">
-            <span class="method__name">parseDate</span>
-            <span>(</span>
-            <div class="method__input-row">
-              <input type="text" class="method__input" placeholder="input" />
-              <span>,</span>
-              <input
-                type="text"
-                class="method__input"
-                placeholder="inputFormat"
-              />
-              <span>) = </span>
-            </div>
-            <span class="task__output"></span>
-          </div>
+            <li>
+              <div class="task__method" data-method-name="parseDate">
+                <span class="method__name">parseDate</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    type="text"
+                    class="method__input"
+                    placeholder="input"
+                  />
+                  <span>,</span>
+                  <input
+                    type="text"
+                    class="method__input"
+                    placeholder="inputFormat"
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"></span>
+              </div>
+            </li>
 
-          <div class="task__method" data-method-name="fromNow">
-            <span class="method__name">fromNow</span>
-            <span>(</span>
-            <div class="method__input-row">
-              <input type="text" class="method__input" placeholder="date" />
-              <span>,</span>
-              <input
-                type="text"
-                class="method__input"
-                placeholder="inputFormat"
-              />
-              <span>) = </span>
-            </div>
-            <span class="task__output"></span>
-          </div>
+            <li>
+              <div class="task__method" data-method-name="fromNow">
+                <span class="method__name">fromNow</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input type="text" class="method__input" placeholder="date" />
+                  <span>,</span>
+                  <input
+                    type="text"
+                    class="method__input"
+                    placeholder="inputFormat"
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"></span>
+              </div>
+            </li>
+          </ul>
         </div>
 
         <h3>Examples</h3>
-        <div class="task-example">
-          <div class="task__method" data-method-name="format">
-            <span class="method__name">format</span>
-            <span>(</span>
-            <div class="method__input-row">
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="31102011"
-              />
-              <span>,</span>
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="DDMMYYYY"
-              />
-              <span>,</span>
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="DD-MM-YYYY"
-              />
-              <span>) = </span>
-            </div>
-            <span class="task__output"></span>
-          </div>
+        <div class="task__example">
+          <ul>
+            <li>
+              <div class="task__method" data-method-name="format">
+                <span class="method__name">format</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="31102011"
+                  />
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="DDMMYYYY"
+                  />
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="DD-MM-YYYY"
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"></span>
+              </div>
+            </li>
 
-          <div class="task__method" data-method-name="format">
-            <span class="method__name">format</span>
-            <span>(</span>
-            <div class="method__input-row">
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="12 Oct 2019"
-              />
-              <span>,</span>
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="DD MMM YYYY"
-              />
-              <span>,</span>
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="DD-MM-YYYY"
-              />
-              <span>) = </span>
-            </div>
-            <span class="task__output"></span>
-          </div>
+            <li>
+              <div class="task__method" data-method-name="format">
+                <span class="method__name">format</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="12 Oct 2019"
+                  />
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="DD MMM YYYY"
+                  />
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="DD-MM-YYYY"
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"></span>
+              </div>
+            </li>
+            <li>
+              <div class="task__method" data-method-name="format">
+                <span class="method__name">format</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="10/29/2020"
+                  />
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="MM/DD/YYYY"
+                  />
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="MMMM DD YYYY"
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"></span>
+              </div>
+            </li>
+            <li>
+              <div class="task__method" data-method-name="fromNow">
+                <span class="method__name">fromNow</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="10/28/2019"
+                  />
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="MM/DD/YYYY"
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"></span>
+              </div>
+            </li>
 
-          <div class="task__method" data-method-name="format">
-            <span class="method__name">format</span>
-            <span>(</span>
-            <div class="method__input-row">
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="10/29/2020"
-              />
-              <span>,</span>
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="MM/DD/YYYY"
-              />
-              <span>,</span>
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="MMMM DD YYYY"
-              />
-              <span>) = </span>
-            </div>
-            <span class="task__output"></span>
-          </div>
-
-          <div class="task__method" data-method-name="fromNow">
-            <span class="method__name">fromNow</span>
-            <span>(</span>
-            <div class="method__input-row">
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="10/28/2019"
-              />
-              <span>,</span>
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="MM/DD/YYYY"
-              />
-              <span>) = </span>
-            </div>
-            <span class="task__output"></span>
-          </div>
-
-          <div class="task__method" data-method-name="parseDate">
-            <span class="method__name">parseDate</span>
-            <span>(</span>
-            <div class="method__input-row">
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="10/29/2020"
-              />
-              <span>,</span>
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="MM/DD/YYYY"
-              />
-              <span>) = </span>
-            </div>
-            <span class="task__output"></span>
-          </div>
+            <li>
+              <div class="task__method" data-method-name="parseDate">
+                <span class="method__name">parseDate</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="10/29/2020"
+                  />
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="MM/DD/YYYY"
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"></span>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -271,120 +297,133 @@
         </a>
 
         <h3>Live</h3>
-        <div class="task-live">
-          <div class="task__method" data-method-name="format">
-            <span class="method__name">format</span>
-            <span>(</span>
-            <div class="method__input-row">
-              <textarea
-                type="text"
-                class="method__input method__input--area"
-                placeholder="text"
-              ></textarea>
-              <span>,</span>
-              <input
-                type="text"
-                class="method__input"
-                placeholder="lineLength"
-              />
-              <span>,</span>
-              <input
-                type="text"
-                class="method__input"
-                placeholder="lineCount"
-              />
-              <span>,</span>
-              <select class="method__input" id="cars">
-                <option value="WORD">WORD</option>
-                <option value="LETTER">LETTER</option>
-                <option value="SENTENCE">SENTENCE</option>
-              </select>
-              <span>) = </span>
-            </div>
-            <div class="task__output-wrapper">
-              <span class="task__output"> </span>
-            </div>
-          </div>
+        <div class="task__live">
+          <ul>
+            <li>
+              <div class="task__method" data-method-name="format">
+                <span class="method__name">format</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <textarea
+                    type="text"
+                    class="method__input method__input--textarea"
+                    placeholder="text"
+                  ></textarea>
+                  <span>,</span>
+                  <input
+                    type="text"
+                    class="method__input"
+                    placeholder="lineLength"
+                  />
+                  <span>,</span>
+                  <input
+                    type="text"
+                    class="method__input"
+                    placeholder="lineCount"
+                  />
+                  <span>,</span>
+                  <select class="method__input" id="cars">
+                    <option value="WORD">WORD</option>
+                    <option value="LETTER">LETTER</option>
+                    <option value="SENTENCE">SENTENCE</option>
+                  </select>
+                  <span>) = </span>
+                </div>
+                <div class="task__output-wrapper">
+                  <span class="task__output"> </span>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
 
         <h3>Examples</h3>
-        <div class="task-example">
-          <div class="task__method" data-method-name="format">
-            <span class="method__name">format</span>
-            <span>(</span>
-            <div class="method__input-row">
-              <textarea
-                disabled
-                type="text"
-                class="method__input method__input--area"
-                placeholder="Написать функцию обработчика входного текста. Функция должна принимать
-            на вход строку, максимальный размер строки (опционально), максимальное"
-              ></textarea>
-              <span>,</span>
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="20"
-              />
-              <span>,</span>
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="20"
-              />
-              <span>,</span>
-              <select disabled class="method__input" id="cars">
-                <option value="WORD">WORD</option>
-                <option value="LETTER">LETTER</option>
-                <option value="SENTENCE">SENTENCE</option>
-              </select>
-              <span>) = </span>
-            </div>
-            <div class="task__output-wrapper">
-              <span class="task__output"> </span>
-            </div>
-          </div>
-        </div>
-
-        <div class="task-example">
-          <div class="task__method" data-method-name="format">
-            <span class="method__name">format</span>
-            <span>(</span>
-            <div class="method__input-row">
-              <textarea
-                disabled
-                type="text"
-                class="method__input method__input--area"
-                placeholder="Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum reiciendis natus ullam. Rem similique asperiores perferendis vel est ratione maiores voluptatum tenetur quos error iusto possimus. Fugiat delectus libero."
-              ></textarea>
-              <span>,</span>
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="60"
-              />
-              <span>,</span>
-              <input
-                disabled
-                type="text"
-                class="method__input"
-                placeholder="20"
-              />
-              <span>,</span>
-              <select disabled class="method__input" id="cars">
-                <option value="WORD">WORD</option>
-                <option value="LETTER">LETTER</option>
-                <option selected value="SENTENCE">SENTENCE</option>
-              </select>
-              <span>) = </span>
-            </div>
-            <div class="task__output-wrapper">
-              <span class="task__output"> </span>
-            </div>
-          </div>
+        <div class="task__example">
+          <ul>
+            <li>
+              <div class="task__method" data-method-name="format">
+                <span class="method__name">format</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <textarea
+                    readonly
+                    type="text"
+                    class="method__input method__input--example method__input--textarea"
+                  >
+Написать функцию обработчика входного текста. Функция должна принимать
+              на вход строку, максимальный размер строки (опционально), максимальное</textarea
+                  >
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    placeholder="20"
+                  />
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    placeholder="20"
+                  />
+                  <span>,</span>
+                  <select readonly class="method__input method__input--example">
+                    <option value="WORD">WORD</option>
+                    <option value="LETTER">LETTER</option>
+                    <option value="SENTENCE">SENTENCE</option>
+                  </select>
+                  <span>) = </span>
+                </div>
+                <div class="task__output-wrapper">
+                  <span class="task__output"> </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="task__method" data-method-name="format">
+                <span class="method__name">format</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <textarea
+                    readonly
+                    type="text"
+                    class="method__input method__input--example method__input--textarea"
+                  >
+Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum reiciendis natus ullam. Rem similique asperiores perferendis vel est ratione maiores voluptatum tenetur quos error iusto possimus. Fugiat delectus libero.</textarea
+                  >
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="60"
+                  />
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="20"
+                  />
+                  <span>,</span>
+                  <select
+                    readonly
+                    class="method__input method__input--example"
+                    id="cars"
+                  >
+                    <option value="WORD">WORD</option>
+                    <option value="LETTER">LETTER</option>
+                    <option selected value="SENTENCE">SENTENCE</option>
+                  </select>
+                  <span>) = </span>
+                </div>
+                <div class="task__output-wrapper">
+                  <span class="task__output"> </span>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

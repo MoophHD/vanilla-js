@@ -39,5 +39,17 @@
 
       output.innerText = tasks[taskName][methodName](...arguments);
     });
+
+    // copy example inputs
+    const exampleInputs = [
+      ...document.querySelectorAll(".method__input--example"),
+    ];
+
+    exampleInputs.forEach((input) => {
+      input.addEventListener("click", (e) => {
+        e.target.select();
+        document.execCommand("copy");
+      });
+    });
   });
 })();

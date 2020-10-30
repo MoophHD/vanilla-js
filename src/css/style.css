@@ -3,7 +3,7 @@
 }
 
 .title {
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   color: var(--red);
 }
 
@@ -11,12 +11,16 @@
   margin-bottom: 3rem;
 }
 
+.task {
+  margin-bottom: 3rem;
+}
+
 .task__description {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .task__code-btn {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .task__live {
@@ -33,7 +37,7 @@
   display: flex;
   justify-content: center;
 }
-.task__output-wrapper>.task__output {
+.task__output-wrapper > .task__output {
   flex: initial;
 }
 
@@ -41,8 +45,10 @@
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid grey;
 }
 
 .method__name {
@@ -59,12 +65,21 @@
   width: 150px;
 }
 
-.method__input--area {
+.method__input--textarea {
   width: initial;
   min-width: 250px;
   min-height: 150px;
 }
 
-.task-live {
-  margin-bottom: 2rem;
+.task__live {
+  margin-bottom: 1rem;
+}
+
+.method__input--example {
+  cursor: pointer;
+  color: grey;
+}
+
+.method__input--example:focus {
+  outline: none;
 }
