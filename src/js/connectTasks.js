@@ -5,7 +5,8 @@
     stringCalculator,
     binaryConverter,
     arrayProcessingTool,
-    arraySorter
+    arraySorter,
+    cachingCalculator,
   };
 
   function parseValue(value) {
@@ -40,7 +41,10 @@
       const output = liveMethod.querySelector(".task__output");
 
       inputs.forEach((input) => {
-        input.addEventListener("change", (e) => {
+        input.addEventListener("keyup", (e) => {
+          // Enter
+          if (e.keyCode !== 13) return;
+
           const inputs = [
             ...e.target.parentElement.querySelectorAll(".method__input"),
           ];
@@ -60,10 +64,10 @@
       const output = exampleMethod.querySelector(".task__output");
 
       const arguments = inputs.map((input) =>
-      input.dataset.argumentType == "string"
-        ? input.value
-        : parseValue(input.value)
-    );
+        input.dataset.argumentType == "string"
+          ? input.value
+          : parseValue(input.value)
+      );
 
       output.innerText = tasks[taskName][methodName](...arguments);
     });

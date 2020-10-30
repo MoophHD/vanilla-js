@@ -42,7 +42,7 @@
           <li><a href="#stringCalculator">String calculator</a></li>
           <li><a href="#arraySorter">Array Sorter</a></li>
           <li><a href="#binaryConverter">Binary Converter</a></li>
-          <li><a href="#">Caching calculator</a></li>
+          <li><a href="#cachingCalculator">Caching calculator</a></li>
         </ol>
       </div>
 
@@ -1057,6 +1057,116 @@ Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum
                     type="text"
                     class="method__input method__input--example"
                     value="[55, 92, 19, 80, 30]"
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task" id="cachingCalculator">
+        <h3 class="task__title">Caching Calculator</h3>
+        <p class="task__description">
+          Написать функционал позволяющий производить операции над двумя числами
+          и кэширование результата выполнения операции так, чтобы при повторном
+          вызове функционала с теми же параметрами взялось закэшированное
+          значение и не производилось перевычисление результата
+        </p>
+
+        <a
+          class="btn btn-primary btn-danger task__code-btn"
+          href="https://github.com/MoophHD/p2.itechart/blob/dev/tasks/dateDisplayFormatter.js"
+          >Code
+          <i class="fa fa-link"></i>
+        </a>
+
+        <h3>Live</h3>
+        <div class="task__live">
+          <ul>
+            <li>
+              <div class="task__method" data-method-name="getCalcPerformance">
+                <span class="method__name">getCalcPerformance</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    type="text"
+                    class="method__input"
+                    data-argument-type="string"
+                    placeholder="num1"
+                  />
+                  <span>,</span>
+                  <input type="text" class="method__input" placeholder="num1" />
+                  <span>,</span>
+                  <input
+                    type="text"
+                    class="method__input"
+                    placeholder="operation"
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <h3>Examples</h3>
+        <div class="task__example">
+          <ul>
+            <li>
+              <div class="task__method" data-method-name="getCalcPerformance">
+                <span class="method__name">getCalcPerformance</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    type="text"
+                    class="method__input method__input--example"
+                    data-argument-type="string"
+                    value="99999999"
+                  />
+                  <span>,</span>
+                  <input
+                    type="text"
+                    class="method__input method__input--example"
+                    value="9999"
+                  />
+                  <span>,</span>
+                  <input
+                    type="text"
+                    class="method__input method__input--example"
+                    value="^"
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"></span>
+              </div>
+            </li>
+
+            <li>
+              <div class="task__method" data-method-name="getCalcPerformance">
+                <span class="method__name">getCalcPerformance</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    type="text"
+                    class="method__input method__input--example"
+                    data-argument-type="string"
+                    value="99999999"
+                  />
+                  <span>,</span>
+                  <input
+                    type="text"
+                    class="method__input method__input--example"
+                    value="9999"
+                  />
+                  <span>,</span>
+                  <input
+                    type="text"
+                    class="method__input method__input--example"
+                    value="^"
                   />
                   <span>) = </span>
                 </div>
