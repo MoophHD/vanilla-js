@@ -37,9 +37,9 @@
           <li><a href="#arrayProcessingTool">Array Processing Tool</a></li>
           <li><a href="#dateDisplayFormatter">Date Display Formatter</a></li>
           <li><a href="#textFormatter">Text Formatter</a></li>
-          <li><a href="#">String calculator</a></li>
+          <li><a href="#stringCalculator">String calculator</a></li>
           <li><a href="#">Array Sorter</a></li>
-          <li><a href="#">Binary Converter</a></li>
+          <li><a href="#binaryConverter">Binary Converter</a></li>
           <li><a href="#">Caching calculator</a></li>
         </ol>
       </div>
@@ -421,6 +421,230 @@ Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum
                 <div class="task__output-wrapper">
                   <span class="task__output"> </span>
                 </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task" id="stringCalculator">
+        <h3 class="task__title">String Calculator</h3>
+        <p class="task__description">
+          Разработать объект содержащий набор методов для выполнения функций
+          калькулятора над числами передаваемыми в строковом представлении.
+          Методы должны позволять работать как в целочисленном, так и
+          вещественном формате.
+        </p>
+
+        <a
+          class="btn btn-primary btn-danger task__code-btn"
+          href="https://github.com/MoophHD/p2.itechart/blob/dev/tasks/stringCalculator.js"
+          >Code
+          <i class="fa fa-link"></i>
+        </a>
+
+        <h3>Live</h3>
+        <div class="task__live">
+          <ul>
+            <li>
+              <div class="task__method" data-method-name="parse">
+                <span class="method__name">parse</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    type="text"
+                    class="method__input"
+                    placeholder="expression"
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"> </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <h3>Examples</h3>
+        <div class="task__example">
+          <ul>
+            <li>
+              <div class="task__method" data-method-name="parse">
+                <span class="method__name">parse</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    type="text"
+                    class="method__input method__input--example"
+                    value="2.5 + 2 * 2"
+                    readonly
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"> </span>
+              </div>
+            </li>
+            <li>
+              <div class="task__method" data-method-name="parse">
+                <span class="method__name">parse</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    type="text"
+                    class="method__input method__input--example"
+                    value="2*(5+5) + 2^(1+2)"
+                    readonly
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"> </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task" id="binaryConverter">
+        <h3 class="task__title">Binary Converter</h3>
+        <p class="task__description">
+          Создать объект позволяющий производить конвертацию чисел из двоичной
+          системы исчисления в десятеричную и обратно. Числа представлены в виде
+          векторов (массивов чисел, где индекс является разрядом).Дополнительно:
+          создать функции для перевода из любой системы в любую.
+        </p>
+
+        <a
+          class="btn btn-primary btn-danger task__code-btn"
+          href="https://github.com/MoophHD/p2.itechart/blob/dev/tasks/dateDisplayFormatter.js"
+          >Code
+          <i class="fa fa-link"></i>
+        </a>
+
+        <h3>Live</h3>
+        <div class="task__live">
+          <ul>
+            <li>
+              <div class="task__method" data-method-name="convert">
+                <span class="method__name">convert</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    type="text"
+                    class="method__input"
+                    placeholder="vector"
+                  />
+                  <span>,</span>
+                  <input
+                    type="text"
+                    class="method__input"
+                    placeholder="baseFrom"
+                  />
+                  <span>,</span>
+                  <input
+                    type="text"
+                    class="method__input"
+                    placeholder="baseTo"
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"></span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <h3>Examples</h3>
+        <div class="task__example">
+          <ul>
+            <li>
+              <div class="task__method" data-method-name="convert">
+                <span class="method__name">convert</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="[1,0,1]"
+                  />
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="2"
+                  />
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="10"
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"></span>
+              </div>
+            </li>
+
+            <li>
+              <div class="task__method" data-method-name="convert">
+                <span class="method__name">convert</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="[2,4]"
+                  />
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="10"
+                  />
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="2"
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"></span>
+              </div>
+            </li>
+            
+            <li>
+              <div class="task__method" data-method-name="convert">
+                <span class="method__name">convert</span>
+                <span>(</span>
+                <div class="method__input-row">
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="[f,f]"
+                  />
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="16"
+                  />
+                  <span>,</span>
+                  <input
+                    readonly
+                    type="text"
+                    class="method__input method__input--example"
+                    value="10"
+                  />
+                  <span>) = </span>
+                </div>
+                <span class="task__output"></span>
               </div>
             </li>
           </ul>

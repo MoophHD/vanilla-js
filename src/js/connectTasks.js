@@ -2,14 +2,16 @@
   const tasks = {
     dateDisplayFormatter,
     textFormatter,
+    stringCalculator,
+    binaryConverter
   };
 
   const taskNodes = document.querySelectorAll(".task");
-
   [...taskNodes].forEach((task) => {
     const taskName = task.id;
-    const liveMethods = task.querySelectorAll(".task-live .task__method");
-    const exampleMethods = task.querySelectorAll(".task-example .task__method");
+
+    const liveMethods = task.querySelectorAll(".task__live .task__method");
+    const exampleMethods = task.querySelectorAll(".task__example .task__method");
 
     [...liveMethods].forEach((liveMethod) => {
       const methodName = liveMethod.dataset.methodName;
@@ -22,7 +24,6 @@
             ...e.target.parentElement.querySelectorAll(".method__input"),
           ];
           const arguments = inputs.map((input) => input.value);
-
           output.innerText = tasks[taskName][methodName](...arguments);
         });
       });

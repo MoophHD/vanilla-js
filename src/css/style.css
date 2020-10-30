@@ -71,10 +71,6 @@
   min-height: 150px;
 }
 
-.task__live {
-  margin-bottom: 1rem;
-}
-
 .method__input--example {
   cursor: pointer;
   color: grey;
