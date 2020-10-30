@@ -1,10 +1,10 @@
-const textWrapEnum = Object.freeze({
-  WORD: "WORD",
-  LETTER: "LETTER",
-  SENTENCE: "SENTENCE",
-});
-
 const textFormatter = (() => {
+  const textWrapEnum = Object.freeze({
+    WORD: "WORD",
+    LETTER: "LETTER",
+    SENTENCE: "SENTENCE",
+  });
+
   function getNextLine(proposedLine, wrapType) {
     switch (wrapType) {
       case textWrapEnum.SENTENCE: {
@@ -60,6 +60,10 @@ const textFormatter = (() => {
     //if there's linecount but no line len, calculate max line len
     lineLength = +lineLength;
     lineCount = +lineCount;
+    if (!lineCount && !lineLength) {
+      lineLength = 60;
+    }
+
     if (lineCount && !lineLength) lineLength = ~~(text.length / lineCount);
     if (!lineCount) lineCount = Infinity;
 
@@ -67,7 +71,6 @@ const textFormatter = (() => {
 
     return lines.join("\n");
   }
-
   return {
     format,
   };
