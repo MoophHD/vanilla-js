@@ -43,7 +43,11 @@
           const inputs = [
             ...e.target.parentElement.querySelectorAll(".method__input"),
           ];
-          const arguments = inputs.map((input) => parseValue(input.value));
+          const arguments = inputs.map((input) =>
+            input.dataset.argumentType == "string"
+              ? input.value
+              : parseValue(input.value)
+          );
           output.innerText = tasks[taskName][methodName](...arguments);
         });
       });
@@ -54,7 +58,11 @@
       const inputs = [...exampleMethod.querySelectorAll(".method__input")];
       const output = exampleMethod.querySelector(".task__output");
 
-      const arguments = inputs.map((input) => parseValue(input.value));
+      const arguments = inputs.map((input) =>
+      input.dataset.argumentType == "string"
+        ? input.value
+        : parseValue(input.value)
+    );
 
       output.innerText = tasks[taskName][methodName](...arguments);
     });
