@@ -5,6 +5,7 @@
     stringCalculator,
     binaryConverter,
     arrayProcessingTool,
+    arraySorter
   };
 
   function parseValue(value) {
