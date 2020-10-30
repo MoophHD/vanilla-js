@@ -31,12 +31,7 @@ const binaryConverter = (() => {
   //baseFrom => decimal => baseTo
   //up to 36 base
   function convert(vec = [], baseFrom = 10, baseTo = 2) {
-    if (typeof vec == "string") {
-      vec = vec
-        .slice(1, vec.length - 1)
-        .split(",")
-        .map((num) => num.trim());
-    }
+    if (typeof vec == "string") vec = parseArrayFromString(vec);
 
     baseTo = +baseTo;
     baseFrom = +baseFrom;

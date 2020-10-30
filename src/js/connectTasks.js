@@ -3,15 +3,35 @@
     dateDisplayFormatter,
     textFormatter,
     stringCalculator,
-    binaryConverter
+    binaryConverter,
+    arrayProcessingTool,
   };
+
+  function parseValue(value) {
+    if (/^\[.+\]$/.test(value)) {
+      value = value
+        .slice(1, value.length - 1)
+        .split(",")
+        .map((num) => num.trim());
+
+      return value;
+    }
+
+    if (!isNaN(value)) {
+      return +value;
+    }
+
+    return value;
+  }
 
   const taskNodes = document.querySelectorAll(".task");
   [...taskNodes].forEach((task) => {
     const taskName = task.id;
 
     const liveMethods = task.querySelectorAll(".task__live .task__method");
-    const exampleMethods = task.querySelectorAll(".task__example .task__method");
+    const exampleMethods = task.querySelectorAll(
+      ".task__example .task__method"
+    );
 
     [...liveMethods].forEach((liveMethod) => {
       const methodName = liveMethod.dataset.methodName;
@@ -23,7 +43,7 @@
           const inputs = [
             ...e.target.parentElement.querySelectorAll(".method__input"),
           ];
-          const arguments = inputs.map((input) => input.value);
+          const arguments = inputs.map((input) => parseValue(input.value));
           output.innerText = tasks[taskName][methodName](...arguments);
         });
       });
@@ -34,9 +54,7 @@
       const inputs = [...exampleMethod.querySelectorAll(".method__input")];
       const output = exampleMethod.querySelector(".task__output");
 
-      const arguments = inputs.map((input) =>
-        input.value ? input.value : input.getAttribute("placeholder")
-      );
+      const arguments = inputs.map((input) => parseValue(input.value));
 
       output.innerText = tasks[taskName][methodName](...arguments);
     });

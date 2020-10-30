@@ -1,6 +1,7 @@
 const arrayProcessingTool = (() => {
   // Kadane’s Algorith, O(n)
   function subSum(arr) {
+    arr = arr.map((n) => +n);
     let sum = 0;
     let max = 0;
     for (num of arr) {
@@ -10,15 +11,14 @@ const arrayProcessingTool = (() => {
       } else {
         sum += num;
       }
-
       max = Math.max(max, sum);
     }
-
     return max;
   }
 
   // O(n^2)
   function subSum2(arr) {
+    arr = arr.map((n) => +n);
     let sum = 0;
     let max = sum;
 
@@ -37,7 +37,8 @@ const arrayProcessingTool = (() => {
   const search = {
     max: (arr) => arr.sort((a, b) => b - a)[0],
     min: (arr) => arr.sort((a, b) => a - b)[0],
-    median: (arr) => arr.reduce((acc, val) => acc + val, 0) / arr.length,
+    median: (arr) =>
+      arr.map((n) => +n).reduce((acc, val) => acc + val, 0) / arr.length,
   };
 
   function selectionTask(arr) {
@@ -63,5 +64,13 @@ const arrayProcessingTool = (() => {
     return arr.slice(maxLenLastIndex - maxLen, maxLenLastIndex);
   }
 
-  return { subSum, subSum2, search, selectionTask };
+  return {
+    subSum,
+    subSum2,
+    search,
+    selectionTask,
+    searchMin: search.min,
+    searchMax: search.max,
+    searchMedian: search.median,
+  };
 })();

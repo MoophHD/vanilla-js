@@ -70,7 +70,6 @@ const textFormatter = (() => {
 
     const lines = divideIntoLines(text, lineLength, lineCount, wrapType);
 
-    console.log(lines);
     return lines.join("\n");
   }
   return {
