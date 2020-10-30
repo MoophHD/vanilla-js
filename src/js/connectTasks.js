@@ -21,9 +21,7 @@
           const inputs = [
             ...e.target.parentElement.querySelectorAll(".method__input"),
           ];
-          const arguments = inputs.map((input) =>
-            input.value ? input.value : input.getAttribute("placeholder")
-          );
+          const arguments = inputs.map((input) => input.value);
 
           output.innerText = tasks[taskName][methodName](...arguments);
         });

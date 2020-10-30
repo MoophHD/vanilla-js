@@ -67,14 +67,18 @@
             <span class="method__name">format</span>
             <span>(</span>
             <div class="method__input-row">
-              <input type="text" class="method__input" placeholder="31102011" />
-              <span>,</span>
-              <input type="text" class="method__input" placeholder="DDMMYYYY" />
+              <input type="text" class="method__input" placeholder="input" />
               <span>,</span>
               <input
                 type="text"
                 class="method__input"
-                placeholder="DD-MM-YYYY"
+                placeholder="inputFormat"
+              />
+              <span>,</span>
+              <input
+                type="text"
+                class="method__input"
+                placeholder="outputFormat"
               />
               <span>) = </span>
             </div>
@@ -85,9 +89,13 @@
             <span class="method__name">parseDate</span>
             <span>(</span>
             <div class="method__input-row">
-              <input type="text" class="method__input" placeholder="20130431" />
+              <input type="text" class="method__input" placeholder="input" />
               <span>,</span>
-              <input type="text" class="method__input" placeholder="YYYYMMDD" />
+              <input
+                type="text"
+                class="method__input"
+                placeholder="inputFormat"
+              />
               <span>) = </span>
             </div>
             <span class="task__output"></span>
@@ -97,16 +105,12 @@
             <span class="method__name">fromNow</span>
             <span>(</span>
             <div class="method__input-row">
-              <input
-                type="text"
-                class="method__input"
-                placeholder="10/11/2000"
-              />
+              <input type="text" class="method__input" placeholder="date" />
               <span>,</span>
               <input
                 type="text"
                 class="method__input"
-                placeholder="MM/DD/YYYY"
+                placeholder="inputFormat"
               />
               <span>) = </span>
             </div>
@@ -275,13 +279,20 @@
               <textarea
                 type="text"
                 class="method__input method__input--area"
-                placeholder="Написать функцию обработчика входного текста. Функция должна принимать
-              на вход строку, максимальный размер строки (опционально), максимальное"
+                placeholder="text"
               ></textarea>
               <span>,</span>
-              <input type="text" class="method__input" placeholder="20" />
+              <input
+                type="text"
+                class="method__input"
+                placeholder="lineLength"
+              />
               <span>,</span>
-              <input type="text" class="method__input" placeholder="20" />
+              <input
+                type="text"
+                class="method__input"
+                placeholder="lineCount"
+              />
               <span>,</span>
               <select class="method__input" id="cars">
                 <option value="WORD">WORD</option>
@@ -290,7 +301,9 @@
               </select>
               <span>) = </span>
             </div>
-            <span class="task__output task__output--full-width"></span>
+            <div class="task__output-wrapper">
+              <span class="task__output"> </span>
+            </div>
           </div>
         </div>
 
