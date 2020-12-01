@@ -21,6 +21,11 @@ const stringCalculator = (() => {
     return !isNaN(parseFloat(str)) && isFinite(str);
   }
 
+  const associativity = {
+    RIGHT: "RIGHT",
+    LEFT: "LEFT",
+  };
+
   //Shunting-yard algorithm
   function infixToPostfix(infix) {
     let outputQueue = [];
@@ -28,23 +33,23 @@ const stringCalculator = (() => {
     let operators = {
       "^": {
         precedence: 4,
-        associativity: "Right",
+        associativity: associativity.RIGHT,
       },
       "*": {
         precedence: 3,
-        associativity: "Left",
+        associativity: associativity.LEFT,
       },
       "/": {
         precedence: 3,
-        associativity: "Left",
+        associativity: associativity.LEFT,
       },
       "+": {
         precedence: 2,
-        associativity: "Left",
+        associativity: associativity.LEFT,
       },
       "-": {
         precedence: 2,
-        associativity: "Left",
+        associativity: associativity.LEFT,
       },
     };
 
@@ -61,9 +66,9 @@ const stringCalculator = (() => {
         let o2 = operatorStack[operatorStack.length - 1];
         while (
           "^*/+-".indexOf(o2) !== -1 &&
-          ((operators[o1].associativity === "Left" &&
+          ((operators[o1].associativity === associativity.LEFT &&
             operators[o1].precedence <= operators[o2].precedence) ||
-            (operators[o1].associativity === "Right" &&
+            (operators[o1].associativity === associativity.RIGHT &&
               operators[o1].precedence < operators[o2].precedence))
         ) {
           outputQueue.push(operatorStack.pop());

@@ -23,8 +23,8 @@ const arraySorter = (() => {
     let len = arr.length;
     let pivot, partitionIndex;
 
-    if (left === undefined) left = 0;
-    if (right === undefined) right = len - 1;
+    if (left === undefined || left === null) left = 0;
+    if (right === undefined || right === null) right = len - 1;
 
     if (left < right) {
       pivot = right;

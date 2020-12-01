@@ -38,7 +38,18 @@ Date.prototype.fromNow = function () {
   return message;
 };
 
+
+// TODO: validator && validator must convert input to uppercases
 const dateDisplayFormatter = (() => {
+  const tokenPattern = {
+    MMMM: "MMMM",
+    MMM: "MMM",
+    MM: "MM",
+    DD: "DD",
+    YYYY: "YYYY",
+    YY: "YY",
+  };
+
   const monthNamesLong = [
     "January",
     "February",
@@ -70,30 +81,30 @@ const dateDisplayFormatter = (() => {
   ];
 
   function getMonthPattern(format) {
-    if (format.indexOf("MMMM") != -1) {
-      return "MMMM";
-    } else if (format.indexOf("MMM") != -1) {
-      return "MMM";
-    } else if (format.indexOf("MM") != -1) {
-      return "MM";
+    if (format.indexOf(tokenPattern.MMMM) != -1) {
+      return tokenPattern.MMMM;
+    } else if (format.indexOf(tokenPattern.MMM) != -1) {
+      return tokenPattern.MMM;
+    } else if (format.indexOf(tokenPattern.MM) != -1) {
+      return tokenPattern.MM;
     } else {
       return null;
     }
   }
 
   function getDayPattern(format) {
-    if (format.indexOf("DD") != -1) {
-      return "DD";
+    if (format.indexOf(tokenPattern.DD) != -1) {
+      return tokenPattern.DD;
     } else {
       return null;
     }
   }
 
   function getYearPattern(format) {
-    if (format.indexOf("YYYY") != -1) {
-      return "YYYY";
-    } else if (format.indexOf("YY") != -1) {
-      return "YY";
+    if (format.indexOf(tokenPattern.YYYY) != -1) {
+      return tokenPattern.YYYY;
+    } else if (format.indexOf(tokenPattern.YY) != -1) {
+      return tokenPattern.YY;
     } else {
       return null;
     }
@@ -102,8 +113,8 @@ const dateDisplayFormatter = (() => {
   function parseDay(input, inputFormat) {
     let day;
     let pattern = getDayPattern(inputFormat);
-    if (pattern == "DD") {
-      let dayIndex = inputFormat.indexOf("DD");
+    if (pattern == tokenPattern.DD) {
+      let dayIndex = inputFormat.indexOf(tokenPattern.DD);
       day = +input.slice(dayIndex, dayIndex + 2);
     } else {
       return null;
@@ -117,14 +128,14 @@ const dateDisplayFormatter = (() => {
     let pattern = getMonthPattern(inputFormat);
 
     switch (pattern) {
-      case "MMMM":
+      case tokenPattern.MMMM:
         month = monthNamesLong.findIndex((name) => input.includes(name));
         break;
-      case "MMM":
+      case tokenPattern.MMM:
         month = monthNamesNarrow.findIndex((name) => input.includes(name));
         break;
-      case "MM":
-        let monthIndex = inputFormat.indexOf("MM");
+      case tokenPattern.MM:
+        let monthIndex = inputFormat.indexOf(tokenPattern.MM);
         month = +input.slice(monthIndex, monthIndex + 2);
         break;
       default:
@@ -138,11 +149,11 @@ const dateDisplayFormatter = (() => {
     let year, yearIndex;
     let pattern = getYearPattern(inputFormat);
 
-    if (pattern == "YYYY") {
-      yearIndex = inputFormat.indexOf("YYYY");
+    if (pattern == tokenPattern.YYYY) {
+      yearIndex = inputFormat.indexOf(tokenPattern.YYYY);
       year = +input.slice(yearIndex, yearIndex + 4);
-    } else if (pattern == "YY") {
-      yearIndex = inputFormat.indexOf("YY");
+    } else if (pattern == tokenPattern.YY) {
+      yearIndex = inputFormat.indexOf(tokenPattern.YY);
       year = +input.slice(yearIndex, yearIndex + 2);
     } else {
       return null;
@@ -163,8 +174,8 @@ const dateDisplayFormatter = (() => {
     let result = format.slice();
     let pattern = getDayPattern(format);
 
-    if (pattern == "DD") {
-      result = result.replace("DD", ("0" + date.getDate()).slice(-2));
+    if (pattern == tokenPattern.DD) {
+      result = result.replace(tokenPattern.DD, ("0" + date.getDate()).slice(-2));
     }
 
     return result;
@@ -174,12 +185,12 @@ const dateDisplayFormatter = (() => {
     let result = format.slice();
     let pattern = getMonthPattern(format);
 
-    if (pattern == "MMMM") {
-      result = result.replace("MMMM", monthNamesLong[date.getMonth()]);
-    } else if (pattern == "MMM") {
-      result = result.replace("MMM", monthNamesNarrow[date.getMonth()]);
-    } else if (pattern == "MM") {
-      result = result.replace("MM", ("0" + (date.getMonth() + 1)).slice(-2));
+    if (pattern == tokenPattern.MMMM) {
+      result = result.replace(tokenPattern.MMMM, monthNamesLong[date.getMonth()]);
+    } else if (pattern == tokenPattern.MMM) {
+      result = result.replace(tokenPattern.MMM, monthNamesNarrow[date.getMonth()]);
+    } else if (pattern == tokenPattern.MM) {
+      result = result.replace(tokenPattern.MM, ("0" + (date.getMonth() + 1)).slice(-2));
     }
 
     return result;
@@ -189,10 +200,10 @@ const dateDisplayFormatter = (() => {
     let result = format.slice();
     let pattern = getYearPattern(format);
 
-    if (pattern == "YYYY") {
-      result = result.replace("YYYY", date.getFullYear());
-    } else if (pattern == "YY") {
-      result = result.replace("YY", date.getFullYear().toString().slice(-2));
+    if (pattern == tokenPattern.YYYY) {
+      result = result.replace(tokenPattern.YYYY, date.getFullYear());
+    } else if (pattern == tokenPattern.YY) {
+      result = result.replace(tokenPattern.YY, date.getFullYear().toString().slice(-2));
     }
 
     return result;

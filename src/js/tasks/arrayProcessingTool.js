@@ -1,7 +1,7 @@
 const arrayProcessingTool = (() => {
   // Kadane’s Algorith, O(n)
-  function subSum(arr) {
-    arr = arr.map((n) => +n);
+  function subSum(inputArr) {
+    arr = inputArr.map((n) => +n);
     let sum = 0;
     let max = 0;
     for (num of arr) {
@@ -17,8 +17,8 @@ const arrayProcessingTool = (() => {
   }
 
   // O(n^2)
-  function subSum2(arr) {
-    arr = arr.map((n) => +n);
+  function subSum2(inputArr) {
+    arr = inputArr.map((n) => +n);
     let sum = 0;
     let max = sum;
 
@@ -67,7 +67,6 @@ const arrayProcessingTool = (() => {
   return {
     subSum,
     subSum2,
-    search,
     selectionTask,
     searchMin: search.min,
     searchMax: search.max,
