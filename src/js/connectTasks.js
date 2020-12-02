@@ -37,42 +37,64 @@
 
     [...liveMethods].forEach((liveMethod) => {
       const methodName = liveMethod.dataset.methodName;
-      const inputs = [...liveMethod.querySelectorAll(".method__input")];
+      const form = liveMethod.querySelector(".method__form");
       const output = liveMethod.querySelector(".task__output");
 
-      inputs.forEach((input) => {
-        input.addEventListener("keyup", (e) => {
-          // Enter
-          if (e.keyCode !== 13) return;
+      if (!form) return;
+      // submit listeners
+      form.addEventListener("submit", (e) => {
+        const inputs = [...e.target.querySelectorAll(".method__input")];
 
-          const inputs = [
-            ...e.target.parentElement.querySelectorAll(".method__input"),
-          ];
-          const arguments = inputs.map((input) =>
-            input.dataset.argumentType == "string"
-              ? input.value
-              : parseValue(input.value)
-          );
-          output.innerText = tasks[taskName][methodName](...arguments);
-        });
+        // validate and format arguments
+        const arguments = [];
+        for (let i = 0; i < inputs.length; i++) {
+          const input = inputs[i];
+          const type = input.dataset.type;
+          const value = input.value;
+
+          const formattedValue = utils.format(value, type);
+
+          if (formattedValue === null) {
+            output.innerText = "Incorrect value, must be " + type;
+            return;
+          }
+
+          arguments.push(formattedValue);
+        }
+
+        output.innerText = tasks[taskName][methodName](...arguments);
       });
     });
 
+    // run real actions on examples
     [...exampleMethods].forEach((exampleMethod) => {
       const methodName = exampleMethod.dataset.methodName;
-      const inputs = [...exampleMethod.querySelectorAll(".method__input")];
+      const form = exampleMethod.querySelector(".method__form");
       const output = exampleMethod.querySelector(".task__output");
 
-      const arguments = inputs.map((input) =>
-        input.dataset.argumentType == "string"
-          ? input.value
-          : parseValue(input.value)
-      );
+      if (!form) return;
+
+      const inputs = form.querySelectorAll('.method__input');
+      const arguments = [];
+      for (let i = 0; i < inputs.length; i++) {
+        const input = inputs[i];
+        const type = input.dataset.type;
+        const value = input.value;
+
+        const formattedValue = utils.format(value, type);
+
+        if (formattedValue === null) {
+          output.innerText = "Incorrect value, must be " + type;
+          return;
+        }
+
+        arguments.push(formattedValue);
+      }
 
       output.innerText = tasks[taskName][methodName](...arguments);
     });
 
-    // copy example inputs
+    // copy example inputs on click
     const exampleInputs = [
       ...document.querySelectorAll(".method__input--example"),
     ];

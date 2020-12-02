@@ -75,3 +75,15 @@
 .method__input--example:focus {
   outline: none;
 }
+
+.method__accept-btn {
+  margin-left: 0.5rem;
+  border-radius: 5px;
+  background-color: white;
+  border-color: #DC3545;
+  padding: 2px 5px;
+}
+
+.method__accept-btn:hover {
+  background-color: rgb(236, 236, 236);
+}
