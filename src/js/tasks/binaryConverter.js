@@ -28,14 +28,17 @@ const binaryConverter = (() => {
     return vecTo.reverse();
   }
 
+  function validateVec(vec, base) {
+    const invalidChar = vec.find((ch) => charToDec(ch) >= base);
+    if (invalidChar) {
+      throw new Error(`Char ${invalidChar} is not in the base of ${base}`);
+    }
+  }
   //baseFrom => decimal => baseTo
   //up to 36 base
   function convert(vec = [], baseFrom = 10, baseTo = 2) {
-    if (typeof vec == "string") vec = parseArrayFromString(vec);
-
-    baseTo = +baseTo;
-    baseFrom = +baseFrom;
     vec = vec.map((n) => ("" + n).toUpperCase());
+    validateVec(vec, baseFrom);
     vec = vec.map((n) => charToDec(n));
 
     let dec = decFrom(vec, baseFrom);

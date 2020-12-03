@@ -110,6 +110,9 @@ const stringCalculator = (() => {
       case "^": {
         return num1 ** num2;
       }
+      default: {
+        throw new Error("Unsopported operator");
+      }
     }
   }
 
@@ -121,9 +124,9 @@ const stringCalculator = (() => {
     let num1 = expression[operationInd - 2];
     let num2 = expression[operationInd - 1];
 
-    let result = solveBinaryOperation(num1, num2, operation);
-
     if (expression.length == 1) return expression[0];
+
+    let result = solveBinaryOperation(num1, num2, operation);
 
     return solveRPN([
       ...expression.slice(0, operationInd - 2),

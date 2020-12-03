@@ -1,3 +1,7 @@
+:root {
+  --color-danger: #dc3545;
+}
+
 .main-container {
   padding-top: 1rem;
 }
@@ -61,6 +65,11 @@
   width: 150px;
 }
 
+.method__input--invalid {
+  background-color: var(--color-danger);
+  color: white;
+}
+
 .method__input--textarea {
   width: initial;
   min-width: 250px;
@@ -80,7 +89,7 @@
   margin-left: 0.5rem;
   border-radius: 5px;
   background-color: white;
-  border-color: #DC3545;
+  border-color: var(--color-danger);
   padding: 2px 5px;
 }
 

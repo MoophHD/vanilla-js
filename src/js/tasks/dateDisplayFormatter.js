@@ -38,8 +38,6 @@ Date.prototype.fromNow = function () {
   return message;
 };
 
-
-// TODO: validator && validator must convert input to uppercases
 const dateDisplayFormatter = (() => {
   const tokenPattern = {
     MMMM: "MMMM",
@@ -151,18 +149,20 @@ const dateDisplayFormatter = (() => {
 
     if (pattern == tokenPattern.YYYY) {
       yearIndex = inputFormat.indexOf(tokenPattern.YYYY);
-      year = +input.slice(yearIndex, yearIndex + 4);
+      year = input.slice(yearIndex, yearIndex + 4);
     } else if (pattern == tokenPattern.YY) {
       yearIndex = inputFormat.indexOf(tokenPattern.YY);
-      year = +input.slice(yearIndex, yearIndex + 2);
+      year = input.slice(yearIndex, yearIndex + 2);
     } else {
       return null;
     }
 
-    return year;
+    return +year;
   }
 
   function parseDate(input, inputFormat) {
+    validateInput(input, inputFormat);
+
     let day = parseDay(input, inputFormat);
     let month = parseMonth(input, inputFormat);
     let year = parseYear(input, inputFormat);
@@ -170,12 +170,30 @@ const dateDisplayFormatter = (() => {
     return new Date(year, month - 1, day);
   }
 
+  function validateInput(input, format) {
+    //eg 05 October 2012, DD MMMM YYYY
+    if (format.indexOf(tokenPattern.MMMM) != -1) {
+      const tokenStart = format.indexOf(tokenPattern.MMMM);
+
+      const month = monthNamesLong[parseMonth(input, "MMMM")];
+
+      input = input.replace(month, "");
+      format = format.replace(tokenPattern.MMMM, "");
+    }
+
+    if (input.length !== format.length)
+      throw new Error("Input doesn't match the provided format");
+  }
+
   function formatDay(date, format) {
     let result = format.slice();
     let pattern = getDayPattern(format);
 
     if (pattern == tokenPattern.DD) {
-      result = result.replace(tokenPattern.DD, ("0" + date.getDate()).slice(-2));
+      result = result.replace(
+        tokenPattern.DD,
+        ("0" + date.getDate()).slice(-2)
+      );
     }
 
     return result;
@@ -186,11 +204,20 @@ const dateDisplayFormatter = (() => {
     let pattern = getMonthPattern(format);
 
     if (pattern == tokenPattern.MMMM) {
-      result = result.replace(tokenPattern.MMMM, monthNamesLong[date.getMonth()]);
+      result = result.replace(
+        tokenPattern.MMMM,
+        monthNamesLong[date.getMonth()]
+      );
     } else if (pattern == tokenPattern.MMM) {
-      result = result.replace(tokenPattern.MMM, monthNamesNarrow[date.getMonth()]);
+      result = result.replace(
+        tokenPattern.MMM,
+        monthNamesNarrow[date.getMonth()]
+      );
     } else if (pattern == tokenPattern.MM) {
-      result = result.replace(tokenPattern.MM, ("0" + (date.getMonth() + 1)).slice(-2));
+      result = result.replace(
+        tokenPattern.MM,
+        ("0" + (date.getMonth() + 1)).slice(-2)
+      );
     }
 
     return result;
@@ -203,7 +230,10 @@ const dateDisplayFormatter = (() => {
     if (pattern == tokenPattern.YYYY) {
       result = result.replace(tokenPattern.YYYY, date.getFullYear());
     } else if (pattern == tokenPattern.YY) {
-      result = result.replace(tokenPattern.YY, date.getFullYear().toString().slice(-2));
+      result = result.replace(
+        tokenPattern.YY,
+        date.getFullYear().toString().slice(-2)
+      );
     }
 
     return result;
@@ -224,12 +254,8 @@ const dateDisplayFormatter = (() => {
     inputFormat = "DDMMYYYY",
     outputFormat = "DD-MM-YYYY"
   ) {
-    let date;
-    if (typeof input == "string") {
-      date = parseDate(input, inputFormat);
-    } else {
-      date = new Date(input);
-    }
+    validateInput(input, inputFormat);
+    const date = parseDate(input, inputFormat);
 
     return formatDate(date, outputFormat);
   }

@@ -9,23 +9,6 @@
     cachingCalculator,
   };
 
-  function parseValue(value) {
-    if (/^\[.+\]$/.test(value)) {
-      value = value
-        .slice(1, value.length - 1)
-        .split(",")
-        .map((num) => num.trim());
-
-      return value;
-    }
-
-    if (!isNaN(value)) {
-      return +value;
-    }
-
-    return value;
-  }
-
   const taskNodes = document.querySelectorAll(".task");
   [...taskNodes].forEach((task) => {
     const taskName = task.id;
@@ -35,13 +18,13 @@
       ".task__example .task__method"
     );
 
+    // attach actions on forms
     [...liveMethods].forEach((liveMethod) => {
       const methodName = liveMethod.dataset.methodName;
       const form = liveMethod.querySelector(".method__form");
       const output = liveMethod.querySelector(".task__output");
 
       if (!form) return;
-      // submit listeners
       form.addEventListener("submit", (e) => {
         const inputs = [...e.target.querySelectorAll(".method__input")];
 
@@ -49,20 +32,38 @@
         const arguments = [];
         for (let i = 0; i < inputs.length; i++) {
           const input = inputs[i];
-          const type = input.dataset.type;
-          const value = input.value;
 
-          const formattedValue = utils.format(value, type);
+          // remove marker on focus
+          input.addEventListener("focus", (e) => {
+            const target = e.target;
+            if (target.classList.contains("method__input--invalid")) {
+              target.classList.remove("method__input--invalid");
+            }
+          });
 
-          if (formattedValue === null) {
-            output.innerText = "Incorrect value, must be " + type;
+          try {
+            const type = input.dataset.type;
+            const value = input.value;
+
+            const formattedValue = utils.format(value, type);
+
+            arguments.push(formattedValue);
+          } catch (e) {
+            if (!input.classList.contains("method__input--invalid")) {
+              input.classList.add("method__input--invalid");
+            }
+            output.innerText = e.message;
             return;
           }
-
-          arguments.push(formattedValue);
         }
 
-        output.innerText = tasks[taskName][methodName](...arguments);
+        try {
+          const methodResult = tasks[taskName][methodName](...arguments);
+
+          output.innerText = methodResult;
+        } catch (e) {
+          output.innerText = e.message;
+        }
       });
     });
 
@@ -74,7 +75,7 @@
 
       if (!form) return;
 
-      const inputs = form.querySelectorAll('.method__input');
+      const inputs = form.querySelectorAll(".method__input");
       const arguments = [];
       for (let i = 0; i < inputs.length; i++) {
         const input = inputs[i];

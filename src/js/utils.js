@@ -1,11 +1,18 @@
 const utils = (() => {
   const separator = ",";
-  const patternTypes = { arrNum: "arrNum", num: "num", string: "string" };
+  const patternTypes = {
+    arrNum: "arrNum",
+    arrString: "arrString",
+    num: "num",
+    string: "string",
+  };
   const regex = { num: /^[-+]?\d*\.?\d+$/, operation: /^\+|\-|\\|\^$/ };
-  // const arrNum =
 
   function format(value, type) {
-    if (!validate(value, type)) return null;
+    if (!type) return value;
+
+    if (!validate(value, type))
+      throw new Error("Validation error, must be " + type);
 
     switch (type) {
       case patternTypes.arrNum: {
@@ -13,6 +20,9 @@ const utils = (() => {
       }
       case patternTypes.num: {
         return +value;
+      }
+      case patternTypes.arrString: {
+        return value.split(separator);
       }
       default: {
         return value;
@@ -32,9 +42,10 @@ const utils = (() => {
           .every((token) => regex.num.test(token));
       }
       case patternTypes.num: {
+        console.log(`check num`);
         return regex.num.test(removeSpaces(value));
       }
-      case patternTypes.num: {
+      case patternTypes.operation: {
         return regex.operation.test(removeSpaces(value));
       }
       default: {

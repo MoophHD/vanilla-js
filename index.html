@@ -314,17 +314,18 @@
                 <li>
                   <div class="task__method" data-method-name="selectionTask">
                     <span class="method__name">selectionTask</span>
-                    <div class="method__input-row">
-                      <form class="method__form" action="javascript:void(0);">
-                        <input
-                          type="text"
-                          class="method__input method__input--example"
-                          value="1, 3, 7, 4, 6, 7, 8, 1, 2, 5, 7, 8, 90, 1"
-                          data-type="arrNum"
-                          readonly
-                        />
-                      </form>
-                    </div>
+                    <form
+                      class="method__form method__input-row"
+                      action="javascript:void(0);"
+                    >
+                      <input
+                        type="text"
+                        class="method__input method__input--example"
+                        value="1, 3, 7, 4, 6, 7, 8, 1, 2, 5, 7, 8, 90, 1"
+                        data-type="arrNum"
+                        readonly
+                      />
+                    </form>
                     <span class="task__output"></span>
                   </div>
                 </li>
@@ -358,28 +359,33 @@
             <li>
               <div class="task__method" data-method-name="format">
                 <span class="method__name">format</span>
-                <span>(</span>
-                <div class="method__input-row">
+                <form
+                  class="method__form method__input-row"
+                  action="javascript:void(0);"
+                >
                   <input
                     type="text"
                     class="method__input"
                     data-argument-type="string"
                     placeholder="input"
+                    required
                   />
                   <span>,</span>
                   <input
                     type="text"
                     class="method__input"
                     placeholder="inputFormat"
+                    required
                   />
                   <span>,</span>
                   <input
                     type="text"
                     class="method__input"
                     placeholder="outputFormat"
+                    required
                   />
-                  <span>) = </span>
-                </div>
+                  <button class="method__accept-btn">Compute</button>
+                </form>
                 <span class="task__output"></span>
               </div>
             </li>
@@ -387,22 +393,26 @@
             <li>
               <div class="task__method" data-method-name="parseDate">
                 <span class="method__name">parseDate</span>
-                <span>(</span>
-                <div class="method__input-row">
+                <form
+                  class="method__form method__input-row"
+                  action="javascript:void(0);"
+                >
                   <input
                     type="text"
                     class="method__input"
                     placeholder="input"
                     data-argument-type="string"
+                    required
                   />
                   <span>,</span>
                   <input
                     type="text"
                     class="method__input"
                     placeholder="inputFormat"
+                    required
                   />
-                  <span>) = </span>
-                </div>
+                  <button class="method__accept-btn">Compute</button>
+                </form>
                 <span class="task__output"></span>
               </div>
             </li>
@@ -410,18 +420,26 @@
             <li>
               <div class="task__method" data-method-name="fromNow">
                 <span class="method__name">fromNow</span>
-                <span>(</span>
-                <div class="method__input-row">
-                  <input type="text" class="method__input" placeholder="date" />
+                <form
+                  class="method__form method__input-row"
+                  action="javascript:void(0);"
+                >
+                  <input
+                    type="text"
+                    class="method__input"
+                    placeholder="date"
+                    required
+                  />
                   <span>,</span>
                   <input
                     type="text"
                     class="method__input"
                     data-argument-type="string"
                     placeholder="inputFormat"
+                    required
                   />
-                  <span>) = </span>
-                </div>
+                  <button class="method__accept-btn">Compute</button>
+                </form>
                 <span class="task__output"></span>
               </div>
             </li>
@@ -434,13 +452,14 @@
             <li>
               <div class="task__method" data-method-name="format">
                 <span class="method__name">format</span>
-                <span>(</span>
-                <div class="method__input-row">
+                <form
+                  class="method__form method__input-row"
+                  action="javascript:void(0);"
+                >
                   <input
                     readonly
                     type="text"
                     class="method__input method__input--example"
-                    data-argument-type="string"
                     value="31102011"
                   />
                   <span>,</span>
@@ -457,8 +476,7 @@
                     class="method__input method__input--example"
                     value="DD-MM-YYYY"
                   />
-                  <span>) = </span>
-                </div>
+                </form>
                 <span class="task__output"></span>
               </div>
             </li>
@@ -466,8 +484,10 @@
             <li>
               <div class="task__method" data-method-name="format">
                 <span class="method__name">format</span>
-                <span>(</span>
-                <div class="method__input-row">
+                <form
+                  class="method__form method__input-row"
+                  action="javascript:void(0);"
+                >
                   <input
                     readonly
                     type="text"
@@ -488,16 +508,17 @@
                     class="method__input method__input--example"
                     value="DD-MM-YYYY"
                   />
-                  <span>) = </span>
-                </div>
+                </form>
                 <span class="task__output"></span>
               </div>
             </li>
             <li>
               <div class="task__method" data-method-name="format">
                 <span class="method__name">format</span>
-                <span>(</span>
-                <div class="method__input-row">
+                <form
+                  class="method__form method__input-row"
+                  action="javascript:void(0);"
+                >
                   <input
                     readonly
                     type="text"
@@ -518,16 +539,17 @@
                     class="method__input method__input--example"
                     value="MMMM DD YYYY"
                   />
-                  <span>) = </span>
-                </div>
+                </form>
                 <span class="task__output"></span>
               </div>
             </li>
             <li>
               <div class="task__method" data-method-name="fromNow">
                 <span class="method__name">fromNow</span>
-                <span>(</span>
-                <div class="method__input-row">
+                <form
+                  class="method__form method__input-row"
+                  action="javascript:void(0);"
+                >
                   <input
                     readonly
                     type="text"
@@ -541,8 +563,7 @@
                     class="method__input method__input--example"
                     value="MM/DD/YYYY"
                   />
-                  <span>) = </span>
-                </div>
+                </form>
                 <span class="task__output"></span>
               </div>
             </li>
@@ -550,8 +571,10 @@
             <li>
               <div class="task__method" data-method-name="parseDate">
                 <span class="method__name">parseDate</span>
-                <span>(</span>
-                <div class="method__input-row">
+                <form
+                  class="method__form method__input-row"
+                  action="javascript:void(0);"
+                >
                   <input
                     readonly
                     type="text"
@@ -565,8 +588,7 @@
                     class="method__input method__input--example"
                     value="MM/DD/YYYY"
                   />
-                  <span>) = </span>
-                </div>
+                </form>
                 <span class="task__output"></span>
               </div>
             </li>
@@ -756,15 +778,18 @@ Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum
             <li>
               <div class="task__method" data-method-name="parse">
                 <span class="method__name">parse</span>
-                <span>(</span>
-                <div class="method__input-row">
+                <form
+                  class="method__form method__input-row"
+                  action="javascript:void(0);"
+                >
                   <input
                     type="text"
                     class="method__input"
                     placeholder="expression"
+                    required
                   />
-                  <span>) = </span>
-                </div>
+                  <button class="method__accept-btn">Compute</button>
+                </form>
                 <span class="task__output"> </span>
               </div>
             </li>
@@ -777,32 +802,34 @@ Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum
             <li>
               <div class="task__method" data-method-name="parse">
                 <span class="method__name">parse</span>
-                <span>(</span>
-                <div class="method__input-row">
+                <form
+                  class="method__form method__input-row"
+                  action="javascript:void(0);"
+                >
                   <input
                     type="text"
                     class="method__input method__input--example"
                     value="2.5 + 2 * 2"
                     readonly
                   />
-                  <span>) = </span>
-                </div>
+                </form>
                 <span class="task__output"> </span>
               </div>
             </li>
             <li>
               <div class="task__method" data-method-name="parse">
                 <span class="method__name">parse</span>
-                <span>(</span>
-                <div class="method__input-row">
+                <form
+                  class="method__form method__input-row"
+                  action="javascript:void(0);"
+                >
                   <input
                     type="text"
                     class="method__input method__input--example"
                     value="2*(5+5) + 2^(1+2)"
                     readonly
                   />
-                  <span>) = </span>
-                </div>
+                </form>
                 <span class="task__output"> </span>
               </div>
             </li>
@@ -833,27 +860,35 @@ Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum
             <li>
               <div class="task__method" data-method-name="convert">
                 <span class="method__name">convert</span>
-                <span>(</span>
-                <div class="method__input-row">
+                <form
+                  class="method__form method__input-row"
+                  action="javascript:void(0);"
+                >
                   <input
                     type="text"
                     class="method__input"
                     placeholder="vector"
+                    data-type="arrString"
+                    required
                   />
                   <span>,</span>
                   <input
                     type="text"
                     class="method__input"
                     placeholder="baseFrom"
+                    data-type="num"
+                    required
                   />
                   <span>,</span>
                   <input
                     type="text"
                     class="method__input"
                     placeholder="baseTo"
+                    data-type="num"
+                    required
                   />
-                  <span>) = </span>
-                </div>
+                  <button class="method__accept-btn">Compute</button>
+                </form>
                 <span class="task__output"></span>
               </div>
             </li>
@@ -866,19 +901,23 @@ Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum
             <li>
               <div class="task__method" data-method-name="convert">
                 <span class="method__name">convert</span>
-                <span>(</span>
-                <div class="method__input-row">
+                <form
+                  class="method__form method__input-row"
+                  action="javascript:void(0);"
+                >
                   <input
                     readonly
                     type="text"
                     class="method__input method__input--example"
-                    value="[1,0,1]"
+                    data-type="arrString"
+                    value="1,0,1"
                   />
                   <span>,</span>
                   <input
                     readonly
                     type="text"
                     class="method__input method__input--example"
+                    data-type="num"
                     value="2"
                   />
                   <span>,</span>
@@ -886,10 +925,10 @@ Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum
                     readonly
                     type="text"
                     class="method__input method__input--example"
+                    data-type="num"
                     value="10"
                   />
-                  <span>) = </span>
-                </div>
+                </form>
                 <span class="task__output"></span>
               </div>
             </li>
@@ -897,19 +936,23 @@ Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum
             <li>
               <div class="task__method" data-method-name="convert">
                 <span class="method__name">convert</span>
-                <span>(</span>
-                <div class="method__input-row">
+                <form
+                  class="method__form method__input-row"
+                  action="javascript:void(0);"
+                >
                   <input
                     readonly
                     type="text"
                     class="method__input method__input--example"
-                    value="[2,4]"
+                    value="2,4"
+                    data-type="arrString"
                   />
                   <span>,</span>
                   <input
                     readonly
                     type="text"
                     class="method__input method__input--example"
+                    data-type="num"
                     value="10"
                   />
                   <span>,</span>
@@ -917,10 +960,10 @@ Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum
                     readonly
                     type="text"
                     class="method__input method__input--example"
+                    data-type="num"
                     value="2"
                   />
-                  <span>) = </span>
-                </div>
+                </form>
                 <span class="task__output"></span>
               </div>
             </li>
@@ -928,19 +971,23 @@ Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum
             <li>
               <div class="task__method" data-method-name="convert">
                 <span class="method__name">convert</span>
-                <span>(</span>
-                <div class="method__input-row">
+                <form
+                  class="method__form method__input-row"
+                  action="javascript:void(0);"
+                >
                   <input
                     readonly
                     type="text"
                     class="method__input method__input--example"
-                    value="[f,f]"
+                    data-type="arrString"
+                    value="f,f"
                   />
                   <span>,</span>
                   <input
                     readonly
                     type="text"
                     class="method__input method__input--example"
+                    data-type="num"
                     value="16"
                   />
                   <span>,</span>
@@ -948,10 +995,10 @@ Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum
                     readonly
                     type="text"
                     class="method__input method__input--example"
+                    data-type="num"
                     value="10"
                   />
-                  <span>) = </span>
-                </div>
+                </form>
                 <span class="task__output"></span>
               </div>
             </li>
@@ -992,7 +1039,6 @@ Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum
                     required
                   />
                   <button class="method__accept-btn">Compute</button>
-
                 </form>
                 <span class="task__output"></span>
               </div>
@@ -1012,7 +1058,6 @@ Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum
                     required
                   />
                   <button class="method__accept-btn">Compute</button>
-
                 </form>
                 <span class="task__output"></span>
               </div>
@@ -1032,7 +1077,6 @@ Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum
                     required
                   />
                   <button class="method__accept-btn">Compute</button>
-
                 </form>
                 <span class="task__output"></span>
               </div>
@@ -1052,7 +1096,6 @@ Lorem ipsum dolor. Sit amet, consectetur adipisicing elit. Consequuntur, dolorum
                     required
                   />
                   <button class="method__accept-btn">Compute</button>
-
                 </form>
                 <span class="task__output"></span>
               </div>
