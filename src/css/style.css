@@ -1,0 +1,98 @@
+:root {
+  --color-danger: #dc3545;
+}
+
+.main-container {
+  padding-top: 1rem;
+}
+
+.title {
+  margin-bottom: 2rem;
+  color: var(--red);
+}
+
+.tasklist-container {
+  margin-bottom: 3rem;
+}
+
+.task {
+  margin-bottom: 3rem;
+}
+
+.task__description {
+  margin-bottom: 0.5rem;
+}
+
+.task__code-btn {
+  margin-bottom: 0.5rem;
+}
+
+.task__output {
+  flex: 1;
+}
+
+.task__output-wrapper {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.task__output-wrapper > .task__output {
+  flex: initial;
+}
+
+.task__method {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid grey;
+}
+
+.method__name {
+  flex-basis: 10rem;
+}
+
+.method__input-row {
+  flex: 3;
+  display: flex;
+  align-items: flex-start;
+}
+
+.method__input {
+  width: 150px;
+}
+
+.method__input--invalid {
+  background-color: var(--color-danger);
+  color: white;
+}
+
+.method__input--textarea {
+  width: initial;
+  min-width: 250px;
+  min-height: 150px;
+}
+
+.method__input--example {
+  cursor: pointer;
+  color: grey;
+}
+
+.method__input--example:focus {
+  outline: none;
+}
+
+.method__accept-btn {
+  margin-left: 0.5rem;
+  border-radius: 5px;
+  background-color: white;
+  border-color: var(--color-danger);
+  padding: 2px 5px;
+}
+
+.method__accept-btn:hover {
+  background-color: rgb(236, 236, 236);
+}
